@@ -32,39 +32,6 @@ AWS Amplify Godot Engine Custom Build Images can be found on [AWS Amplify Godot 
 | [4.2.1](https://godotengine.org/download/archive/4.2.1-stable) | ```amplify-godot-engine/4.2.1``` | ```public.ecr.aws/f7u9w0t1/amplify-godot-engine:4.2.1``` |
 | [4.2](https://godotengine.org/download/archive/4.2-stable) | ```amplify-godot-engine/4.2``` | ```public.ecr.aws/f7u9w0t1/amplify-godot-engine:4.2``` |
 
-### Instructions
-
-1. Update GODOT_ENGINE_VERSION in the buildspec.yml
-    ```
-    version: 0.2
-
-    phases:
-    pre_build:
-        commands:
-        - GODOT_IMAGE_NAME=amplify-godot-engine
-        - GODOT_VERSION=4.3
-        - echo Logging in to Amazon ECR...
-        - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
-    ...
-    ```
-2. Commit the new version of the buildspec.yml
-    ```
-    git add -A
-    git commit -m "bump godot version to 4.3"
-    ```
-3. Create a new version branch. Do not create a branch for each Godot Engine patch version.
-    ```
-    git branch 4.4
-    ```
-4. Push the new branch to GitHub
-    ```
-    git push --set-upstream origin 4.3
-    ```
-5. Push the new branch to CodeCommit
-    ```
-    git push --set-upstream codecommit 4.3
-    ```
-
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
